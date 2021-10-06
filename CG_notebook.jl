@@ -136,6 +136,9 @@ function get_coin_id(currency::String)
     end
 end
 
+# ╔═╡ 8b22311d-aaac-427d-a5f8-7a2e5e421c60
+get_coin_id("eth")
+
 # ╔═╡ 506f7612-7776-4c08-ac21-41644be860ea
 md"
 ### Convert dict to DataFrame
@@ -144,7 +147,7 @@ md"
 # ╔═╡ dd9913e7-710c-47d6-b217-5911e25e4d41
 function dict_to_df(data_dict::Dict, df::DataFrame)
 
-    # Collect only the key-value data which is suitable for plotting
+    # Collect only the key-value pairs where value is a number, hence suitable for plotting
     for key in collect(keys(data_dict))            
         if ~isnothing(data_dict[key]) && length(data_dict[key]) == 1
             push!(df, [key Float64(data_dict[key])])
@@ -208,6 +211,9 @@ function get_dev_comm_data(currency::String)
 
     return df_dev, df_comm
 end
+
+# ╔═╡ a549c06f-9c82-4da0-9d55-e8df004361d3
+coin_dict = get_API_response("/coins/ethereum") 
 
 # ╔═╡ 53a101c9-36e5-4a0b-a895-87ae0c846b79
 md"
@@ -884,21 +890,23 @@ uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
 # ╟─b9822868-91a2-431b-ae92-0aac9de2c683
 # ╠═a36126f6-1505-46e8-b330-9071dc025f9e
 # ╟─d634d55d-d8eb-4cc4-af0d-80a35af7a84d
-# ╟─e4719579-0d17-4b54-a9b5-21a8efbe1819
+# ╠═e4719579-0d17-4b54-a9b5-21a8efbe1819
 # ╟─03b3a0e2-4750-4f5c-89f4-e1d5ab9897ea
 # ╠═85ba3750-b976-4101-8c8d-70f523b6d250
 # ╟─a18c2307-cb12-447d-b438-6db39d9a73e2
 # ╟─9fffc1e8-29f8-4eb9-a769-648b1f615984
+# ╠═8b22311d-aaac-427d-a5f8-7a2e5e421c60
 # ╟─506f7612-7776-4c08-ac21-41644be860ea
-# ╟─dd9913e7-710c-47d6-b217-5911e25e4d41
+# ╠═dd9913e7-710c-47d6-b217-5911e25e4d41
 # ╟─1ccb18d2-ef80-4bc7-974d-d031e6994de8
 # ╟─35ee3257-90aa-4540-8946-a8da70e15614
+# ╠═a549c06f-9c82-4da0-9d55-e8df004361d3
 # ╟─53a101c9-36e5-4a0b-a895-87ae0c846b79
 # ╟─4c5f23aa-5221-4b13-8654-331aa1d3121d
-# ╟─5bc78a4a-ad2e-4210-9fde-f4f90d965416
+# ╠═5bc78a4a-ad2e-4210-9fde-f4f90d965416
+# ╠═5e3ddba3-2c80-4031-949b-9d240bf824a3
 # ╟─8e8e424c-4dc8-41dc-98ed-f2218f49f089
 # ╠═c0389038-b9a7-46e2-9437-14a7f161c7e8
-# ╠═5e3ddba3-2c80-4031-949b-9d240bf824a3
 # ╠═c37790b2-c7ac-41f1-8ee7-aaf3327af86a
 # ╟─2b01d10f-ac30-41e8-a19b-76b7d9c3ec18
 # ╟─9a13a391-441f-4015-a5d3-8125cb284da4
